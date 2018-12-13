@@ -2,7 +2,7 @@ package com.gmail.stepan1983;
 
 public class MessageRendererImpl implements MessageRenderer {
 
-    MessageProvider messageProvider;
+    private MessageProvider messageProvider;
 
     public MessageRendererImpl(MessageProvider messageProvider) {
         this.messageProvider = messageProvider;
@@ -14,7 +14,7 @@ public class MessageRendererImpl implements MessageRenderer {
 
     public void renderMessage() {
 
-        System.out.println(this.messageProvider.getMassage());
+        System.out.println(messageProvider.getMassage());
 
     }
 }
