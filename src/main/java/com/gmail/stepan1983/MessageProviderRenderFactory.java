@@ -1,7 +1,6 @@
 package com.gmail.stepan1983;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
@@ -14,16 +13,22 @@ public class MessageProviderRenderFactory {
 
         Properties properties = new Properties();
 
-        System.out.println("factory creation");
+        File file=new File("C:\\Users\\HOME\\Documents\\git\\IoCProbe\\src\\main\\resources\\app.properties");
 
-        try (InputStream is = MessageProviderRenderFactory.class
-                .getClassLoader().getResourceAsStream("app.properties")) {
+
+
+//        System.out.println("factory creation");
+
+        try(Reader reader=new FileReader(file)){
+
+//        try (InputStream is = MessageProviderRenderFactory.class
+//                .getClassLoader().getResourceAsStream("app.properties")) {
 
 //            System.out.println(is.toString());
 
-            properties.load(is);
+            properties.load(reader);
 
-            System.out.println(properties.getProperty("provider"));
+//            System.out.println(properties.getProperty("provider"));
 
             provider = (MessageProvider) Class.forName(properties.getProperty("provider"))
                     .newInstance();
